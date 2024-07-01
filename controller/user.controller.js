@@ -2,7 +2,6 @@ const User = require("../model/User.model");
 const Admin = require("../model/Admin.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
 const sendMail = require("../utils/nodemailer.service");
 
 const userList = async (req, res) => {
@@ -53,7 +52,7 @@ const register = async (req, res) => {
         user.name,
         user.email,
         "Email Account Verify",
-        "Click the link below to verify your account",
+        "Thank you for signing up for StandardX. Click on the link below to verify your email:",
         `https://ecommerce-project-api-s1c9.onrender.com/api/v1/user/email-verify/${user._id}`,
         "Verify Your Account"
       );
@@ -82,7 +81,12 @@ const login = async (req, res) => {
     });
   }
   const user = await User.findOne({ email });
-  if (user.emailVerified === false) {
+  if (user === null) {
+    return res.status(404).json({
+      success: false,
+      message: "Create New Account!",
+    });
+  } else if (user.emailVerified === false) {
     return res.status(400).json({
       success: false,
       message: "Your Email Is Not Verify!",
@@ -241,7 +245,7 @@ const admin = async (req, res) => {
 const emailVerified = async (req, res) => {
   const { id } = req.params;
   await User.findByIdAndUpdate(id, { emailVerified: true });
-  await res.redirect(process.env.CLIENT_REDIRECT_URL + "/login");
+  await res.redirect("http://localhost:4000/login");
 };
 
 module.exports = {
