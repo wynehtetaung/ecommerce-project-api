@@ -10,13 +10,14 @@ const productRouter = require("./router/product.router");
 app.use(express.json());
 
 // cors setup
-app.use(
-  cors({
-    origin: "http://localhost:4000" && "http://localhost:3000",
-    methods: "GET,POST,PUT,DELETE,PATCH",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:4000" && "http://localhost:3000",
+//     methods: "GET,POST,PUT,DELETE,PATCH",
+//     credentials: true,
+//   })
+// );
+app.use(cors());
 
 // router setup
 app.use("/api/v1/user", userRouter);
