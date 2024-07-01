@@ -54,7 +54,7 @@ const register = async (req, res) => {
         user.email,
         "Email Account Verify",
         "Click the link below to verify your account",
-        `http://localhost:3000/api/v1/user/email-verify/${user._id}`,
+        `https://ecommerce-project-api-s1c9.onrender.com/api/v1/user/email-verify/${user._id}`,
         "Verify Your Account"
       );
       res.status(200).json({
