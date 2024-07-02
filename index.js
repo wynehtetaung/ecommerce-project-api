@@ -14,7 +14,8 @@ app.use(
   cors({
     origin:
       "https://ecommerce-project-2024.netlify.app/" &&
-      "https://ecommerce-project-admin.netlify.app/",
+      "https://ecommerce-project-admin.netlify.app/" &&
+      "https://ecommerce-project-api-s1c9.onrender.com",
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
   })
@@ -33,7 +34,7 @@ mongoose
   })
   .catch((e) => console.log(`mongodb error : ${e}`));
 
-app.listen(process.env.PORT, (err) => {
+app.listen(process.env.PORT || 3000, (err) => {
   if (err) console.log(`Error : ${err}`);
-  console.log(`server is running at ${process.env.PORT}`);
+  console.log(`server is running at ${process.env.PORT || 3000}`);
 });
