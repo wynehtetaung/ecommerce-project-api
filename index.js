@@ -11,25 +11,23 @@ app.use(express.json());
 
 // cors setup
 
-// var whitelist = [
-//   "https://ecommerce-project-2024.netlify.app",
-//   "https://ecommerce-project-admin.netlify.app",
-// ];
-// var corsOptions = {
-//   origin: function (origin, callback) {
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-// };
+var whitelist = [
+  "https://ecommerce-project-2024.netlify.app",
+  "https://ecommerce-project-admin.netlify.app",
+];
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
 
 app.use(
   cors({
-    origin:
-      "https://ecommerce-project-2024.netlify.app" &&
-      "https://ecommerce-project-admin.netlify.app",
+    origin: corsOptions,
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
     optionsSuccessStatus: 200,
