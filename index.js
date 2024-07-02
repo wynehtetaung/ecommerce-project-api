@@ -13,8 +13,8 @@ app.use(express.json());
 app.use(
   cors({
     origin:
-      "https://ecommerce-project-2024.netlify.app/" &&
-      "https://ecommerce-project-admin.netlify.app/" &&
+      "https://ecommerce-project-2024.netlify.app" &&
+      "https://ecommerce-project-admin.netlify.app" &&
       "https://ecommerce-project-api-s1c9.onrender.com",
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
