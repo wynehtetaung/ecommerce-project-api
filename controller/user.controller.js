@@ -245,7 +245,7 @@ const admin = async (req, res) => {
 const emailVerified = async (req, res) => {
   const { id } = req.params;
   await User.findByIdAndUpdate(id, { emailVerified: true });
-  await res.redirect("http://localhost:4000/login");
+  await res.redirect("https://ecommerce-project-admin.netlify.app/login");
 };
 
 module.exports = {
